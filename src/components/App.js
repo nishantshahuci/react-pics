@@ -1,9 +1,11 @@
 // import third party packages
 import React, { Component } from 'react';
-import axios from 'axios';
 
 // import components
 import SearchBar from './SearchBar';
+
+// import api files
+import unsplash from '../api/unsplash';
 
 // App component
 class App extends Component {
@@ -13,12 +15,9 @@ class App extends Component {
     };
 
     onSearchSubmit = async term => {
-        const response = await axios.get('https://api.unsplash.com/search/photos', {
+        const response = await unsplash.get('search/photos', {
             params: {
                 query: term
-            },
-            headers: {
-                Authorization: 'Client-ID ee9ec586465abec23382f90c74a5ee5b65229cace6881716f33c593728c93f08'
             }
         });
 
